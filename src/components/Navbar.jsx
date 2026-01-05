@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// --- ENLACES ACTUALIZADOS ---
+// --- ENLACES (Aseguramos que Colecciones apunta a la página nueva) ---
 const navLinks = [
-  // Redirige a la página nueva independiente
   { name: "Colecciones", href: "/collections" }, 
-  // Redirigen a las secciones de la Home (index)
   { name: "Historia", href: "/#historia" },
   { name: "Contacto", href: "/#contacto" },
 ];
@@ -19,7 +17,11 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 transition-all duration-500 bg-black/40 backdrop-blur-md border-b border-white/10 shadow-lg"
+        // CAMBIOS DE OPTIMIZACIÓN AQUÍ:
+        // 1. bg-[#050505]: Fondo negro casi puro (Más oscuro que antes).
+        // 2. Quitamos 'backdrop-blur-md': Esto acelera muchísimo el scroll en móviles.
+        // 3. border-white/5: Un borde sutil para separarlo del contenido.
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 transition-all duration-500 bg-[#050505] border-b border-white/5 shadow-md"
       >
         {/* LOGO */}
         <a href="/" className="flex items-center gap-3 cursor-pointer z-50 relative group">
@@ -33,7 +35,7 @@ export default function Navbar() {
           </span>
         </a>
 
-        {/* MENÚ ESCRITORIO */}
+        {/* MENÚ ESCRITORIO (Manteniendo tu diseño original) */}
         <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 items-center gap-10">
           {navLinks.map((link) => (
             <a 
@@ -58,15 +60,16 @@ export default function Navbar() {
         </button>
       </motion.nav>
 
-      {/* MENÚ MÓVIL */}
+      {/* MENÚ MÓVIL (Fondo sólido también para rendimiento) */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            animate={{ opacity: 1, backdropFilter: "blur(15px)" }}
-            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-black/90 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            // Fondo sólido negro (#050505) en vez de transparente con blur
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#050505] md:hidden"
           >
             <motion.div 
               className="flex flex-col gap-8 text-center"
