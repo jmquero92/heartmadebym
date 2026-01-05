@@ -6,44 +6,69 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+// --- CONFIGURACIÓN SEO Y REDES SOCIALES ---
+// 1. La descripción bonita para Google y WhatsApp
+const description = "Piezas únicas de crochet y slow fashion hechas a mano en España. Tejido lento para momentos eternos.";
+
+// 2. La imagen para WhatsApp (Tu logo)
+// Astro.url detecta automáticamente tu dominio real (vercel.app)
+const socialImageURL = new URL('/logo.jpeg', Astro.url);
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Heartmade by M - Crochet y Slow Fashion artesanal" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		
 		<title>{title}</title>
-        
-        <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+		<meta name="description" content={description} />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content="Heartmade by M | Atelier & Slow Fashion" />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={socialImageURL} />
+
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content="Heartmade by M | Atelier & Slow Fashion" />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={socialImageURL} />
+
+		<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
 	</head>
 	
-    <body class="bg-[#050505] antialiased">
+	<body class="bg-[#050505] antialiased">
+		
 		<slot />
-        <Footer />
+
+		<Footer />
+		
 	</body>
 </html>
 
 <style is:global>
+	/* ESTILOS GLOBALES */
 	html {
 		font-family: 'Montserrat', sans-serif;
-        background-color: #050505;
-        scroll-behavior: smooth; /* Efecto suave al navegar */
-        
-        /* IMPORTANTE: Esto evita que el menú tape el título al hacer click */
-        scroll-padding-top: 100px; 
+		background-color: #050505;
+		scroll-behavior: smooth;
+		/* Ajuste para que el menú fijo no tape los títulos al navegar */
+		scroll-padding-top: 100px; 
 	}
-    
-    .font-serif {
-        font-family: 'Cormorant Garamond', serif;
-    }
+	
+	/* Clase utilitaria para títulos elegantes */
+	.font-serif {
+		font-family: 'Cormorant Garamond', serif;
+	}
 
 	body {
 		margin: 0;
