@@ -69,12 +69,16 @@ export default function HistoryShort() {
              <p className="text-sm md:text-base text-neutral-600 font-light leading-relaxed mb-10 font-sans">
 Dicen que la creatividad se multiplica cuando se comparte. De la mano de mi gran amiga, disfruto no solo del proceso de crear, sino de capturar cada detalle para vosotros. Un tándem perfecto entre hilos y cámaras, unidas por la pasión de hacer las cosas con el corazón.            </p>
 
-            <button className="group flex items-center gap-3 border-b border-[#2c2420] pb-2 text-xs uppercase tracking-[0.2em] text-[#2c2420] hover:text-rose-500 hover:border-rose-500 transition-all">
-              <span>Descubre nuestras creaciones</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover:translate-x-1 transition-transform">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </button>
+{/* Cambiamos <button> por <a> y añadimos href="/collections" */}
+<a 
+  href="/collections" 
+  className="group flex items-center gap-3 border-b border-[#2c2420] pb-2 text-xs uppercase tracking-[0.2em] text-[#2c2420] hover:text-rose-500 hover:border-rose-500 transition-all cursor-pointer"
+>
+  <span>Descubre nuestras creaciones</span>
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover:translate-x-1 transition-transform">
+    <path d="M5 12h14M12 5l7 7-7 7"/>
+  </svg>
+</a>
 
           </motion.div>
 

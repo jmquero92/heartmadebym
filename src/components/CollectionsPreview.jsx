@@ -86,9 +86,12 @@ export default function CollectionsPreview() {
         </div>
 
         <div className="mt-24 flex justify-center">
-          <button className="border-b border-[#2c2420]/30 pb-1 text-xs uppercase tracking-[0.3em] text-[#2c2420] hover:text-rose-500 hover:border-rose-500 transition-all">
-            Ver todas las colecciones
-          </button>
+          <a 
+  href="/collections" 
+  className="border-b border-[#2c2420]/30 pb-1 text-xs uppercase tracking-[0.3em] text-[#2c2420] hover:text-rose-500 hover:border-rose-500 transition-all cursor-pointer"
+>
+  Ver todas las colecciones
+</a>
         </div>
       </div>
     </section>
