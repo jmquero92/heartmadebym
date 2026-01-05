@@ -61,6 +61,8 @@ export default function CollectionsGrid() {
   const handleNext = () => {
     if (!selectedId) return;
     const currentIndex = filteredProducts.findIndex(p => p.id === selectedId);
+    // Si no encuentra el producto en la categoría actual, no hace nada
+    if (currentIndex === -1) return; 
     const nextIndex = (currentIndex + 1) % filteredProducts.length; // Loop infinito
     setSelectedId(filteredProducts[nextIndex].id);
   };
@@ -68,6 +70,7 @@ export default function CollectionsGrid() {
   const handlePrev = () => {
     if (!selectedId) return;
     const currentIndex = filteredProducts.findIndex(p => p.id === selectedId);
+    if (currentIndex === -1) return;
     const prevIndex = (currentIndex - 1 + filteredProducts.length) % filteredProducts.length; // Loop infinito hacia atrás
     setSelectedId(filteredProducts[prevIndex].id);
   };
@@ -82,7 +85,7 @@ export default function CollectionsGrid() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedId, filteredProducts]); // Dependencias importantes para que el estado esté actualizado
+  }, [selectedId, filteredProducts]); 
 
 
   return (
@@ -128,12 +131,19 @@ export default function CollectionsGrid() {
               {/* Contenedor Imagen */}
               <div className="relative aspect-[3/4] overflow-hidden bg-white mb-4 rounded-sm shadow-sm">
                 <motion.img 
-                  layoutId={`img-${product.id}`} // Magia para la transición suave al abrir
+                  layoutId={`img-${product.id}`} // Animación compartida con Lightbox
                   src={product.img} 
                   alt={product.title} 
+                  
+                  // OPTIMIZACIÓN DE VELOCIDAD:
+                  loading="lazy"
+                  decoding="async"
+                  
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   onError={(e) => {e.target.style.display = 'none'}} 
                 />
+                
+                {/* Overlay oscuro al Hover */}
                 <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 
                 {/* Icono Lupa (Hint visual) */}
@@ -142,7 +152,7 @@ export default function CollectionsGrid() {
                 </div>
               </div>
 
-              {/* Info: Categoría */}
+              {/* Info: Solo Categoría */}
               <div className="text-center">
                 <span className="text-[10px] uppercase tracking-[0.25em] text-[#2c2420]/70 font-medium group-hover:text-rose-500 transition-colors">
                   {product.category}
@@ -196,28 +206,16 @@ export default function CollectionsGrid() {
                 onClick={(e) => e.stopPropagation()} // Click en la imagen NO cierra
             >
                 <motion.img 
-                    layoutId={`img-${selectedProduct.id}`} // Transición compartida
-                    key={selectedProduct.id} // Clave para que React sepa que la img cambió al navegar
+                    layoutId={`img-${selectedProduct.id}`} // Transición suave desde el grid
+                    key={selectedProduct.id}
                     src={selectedProduct.img} 
                     alt={selectedProduct.title}
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }} // Pequeño efecto al cambiar de foto
+                    exit={{ opacity: 0, scale: 0.95 }} 
                     transition={{ duration: 0.3 }}
                     className="max-h-[85vh] max-w-full object-contain shadow-2xl rounded-sm"
                 />
-                
-                {/* Texto flotante en Lightbox (Opcional) */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="absolute bottom-4 left-0 right-0 text-center pointer-events-none"
-                >
-                    <span className="text-white/90 text-sm font-serif italic tracking-wide bg-black/50 px-4 py-1 rounded-full backdrop-blur-md">
-                        {selectedProduct.title}
-                    </span>
-                </motion.div>
-
             </motion.div>
 
           </motion.div>
