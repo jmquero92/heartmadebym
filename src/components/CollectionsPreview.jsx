@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 
 const collections = [
-  { id: 1, title: "Invierno '25", subtitle: "Decoración para Navidad", img: "/invierno.jpeg", offset: 0 },
-  { id: 2, title: "Juguetes", subtitle: "Para los más pequeños de la casa", img: "/juguete.jpeg", offset: 20 },
-  { id: 3, title: "Accesorios", subtitle: "Estética y belleza en cada pieza", img: "/pendientes.jpeg", offset: 0 }
+  { id: 1, title: "Invierno '25", subtitle: "Decoración para Navidad", img: "/invierno.webp", offset: 0 },
+  { id: 2, title: "Juguetes", subtitle: "Para los más pequeños de la casa", img: "/juguete.webp", offset: 20 },
+  { id: 3, title: "Accesorios", subtitle: "Estética y belleza en cada pieza", img: "/pendientes.webp", offset: 0 }
 ];
 
 export default function CollectionsPreview() {

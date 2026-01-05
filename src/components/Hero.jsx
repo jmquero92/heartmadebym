@@ -49,7 +49,7 @@ export default function Hero() {
         animate={{ scale: 1 }}
         transition={{ duration: 10, ease: "easeOut" }}
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/portada.jpeg')" }} 
+        style={{ backgroundImage: "url('/portada.webp')" }} 
       >
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10 opacity-60 mix-blend-overlay pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80" />

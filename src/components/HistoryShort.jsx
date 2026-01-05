@@ -36,7 +36,7 @@ export default function HistoryShort() {
                <div 
                  className="w-full h-full bg-cover bg-center hover:scale-105 transition-transform duration-[1.5s]"
                  // Aquí puedes poner tu foto real de historia
-                 style={{ backgroundImage: "url('/origen.jpeg')" }} 
+                 style={{ backgroundImage: "url('/origen.webp')" }} 
                />
             </div>
           </motion.div>
