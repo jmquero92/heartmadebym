@@ -3,17 +3,24 @@ import { useEffect } from "react";
 
 export default function InstagramSection() {
   
-  const WIDGET_ID = "HIjU7nIf7vWtmsayzr7C"; 
+  // Este es el ID que viene en el código que acabas de mandar:
+  const WIDGET_ID = "B1jU7nif7VvtmawyszjC"; 
 
-  // Cargar el script del widget
   useEffect(() => {
-    // Evitamos cargar el script múltiples veces si ya existe
+    // ESTA PARTE SUSTITUYE A LA ETIQUETA <script>
+    // Comprobamos si ya existe para no cargarlo dos veces
     if (document.querySelector('script[src="https://w.behold.so/widget.js"]')) return;
 
     const script = document.createElement("script");
+    script.type = "module"; // Importante: tu código original usa type="module"
     script.src = "https://w.behold.so/widget.js";
-    script.type = "module";
-    document.body.appendChild(script);
+    document.head.append(script); // Lo añadimos al head como pide tu código
+
+    // Opcional: Limpieza al desmontar el componente
+    return () => {
+        // Generalmente no eliminamos el script para que no se recargue si navegas,
+        // pero si quisieras limpiar, iría aquí.
+    };
   }, []);
 
   return (
@@ -47,9 +54,12 @@ export default function InstagramSection() {
           </motion.div>
         </div>
 
-        {/* AQUÍ ESTÁ EL CAMBIO CLAVE */}
+        {/* --- AQUÍ VA EL WIDGET --- */}
         <div className="min-h-[300px]">
-           {/* Usamos dangerouslySetInnerHTML para que React no se queje de la etiqueta rara */}
+           {/* Usamos dangerouslySetInnerHTML.
+              Esto es necesario porque React a veces bloquea etiquetas personalizadas 
+              como <behold-widget>. Al hacerlo así, forzamos que se pinte tal cual.
+           */}
            <div 
              dangerouslySetInnerHTML={{ 
                __html: `<behold-widget feed-id="${WIDGET_ID}"></behold-widget>` 
