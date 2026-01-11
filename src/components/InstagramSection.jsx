@@ -36,7 +36,7 @@ export default function InstagramSection() {
             viewport={{ once: true }}
           >
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 mb-6 block">
-              Follow our Journey
+              Siguenos en instagram
             </span>
 
             {/* Enlace contenedor con animación hover */}
