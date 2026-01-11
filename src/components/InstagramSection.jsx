@@ -3,26 +3,17 @@ import { useEffect } from "react";
 
 export default function InstagramSection() {
   
-  // ------------------------------------------------------
-  // HE PUESTO TU ID DE BEHOLD.SO AQUÍ:
-  // ------------------------------------------------------
   const WIDGET_ID = "HIjU7nIf7vWtmsayzr7C"; 
 
-  // Esto carga el script del widget automáticamente
+  // Cargar el script del widget
   useEffect(() => {
-    if (!WIDGET_ID) return;
-    
+    // Evitamos cargar el script múltiples veces si ya existe
+    if (document.querySelector('script[src="https://w.behold.so/widget.js"]')) return;
+
     const script = document.createElement("script");
     script.src = "https://w.behold.so/widget.js";
     script.type = "module";
     document.body.appendChild(script);
-
-    return () => {
-      // Limpieza (opcional, pero buena práctica)
-      if(document.body.contains(script)){
-        document.body.removeChild(script);
-      }
-    };
   }, []);
 
   return (
@@ -56,10 +47,14 @@ export default function InstagramSection() {
           </motion.div>
         </div>
 
-        {/* AQUÍ SE CARGA EL WIDGET */}
+        {/* AQUÍ ESTÁ EL CAMBIO CLAVE */}
         <div className="min-h-[300px]">
-           {/* Usamos el componente web oficial según tu captura de pantalla */}
-           <behold-widget feed-id={WIDGET_ID}></behold-widget>
+           {/* Usamos dangerouslySetInnerHTML para que React no se queje de la etiqueta rara */}
+           <div 
+             dangerouslySetInnerHTML={{ 
+               __html: `<behold-widget feed-id="${WIDGET_ID}"></behold-widget>` 
+             }} 
+           />
         </div>
 
       </div>
