@@ -56,7 +56,7 @@ export default function InstagramSection() {
 
         {/* AQUÍ SE CARGA EL WIDGET AUTOMÁTICAMENTE */}
         <div className="min-h-[300px]">
-          {WIDGET_ID === "PON_AQUI_TU_ID_COPIADO" ? (
+          {WIDGET_ID === "B1jU7nif7VvtmawyszjC" ? (
              // Mensaje por si se te olvida poner el ID
              <div className="p-10 border border-dashed border-[#2c2420]/20 text-neutral-400 text-xs uppercase tracking-widest">
                Pega tu ID de Behold.so en el código para ver las fotos
