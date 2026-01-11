@@ -4,14 +4,13 @@ import { useEffect } from "react";
 export default function InstagramSection() {
   
   // ------------------------------------------------------
-  // ¡PEGA AQUÍ TU ID DE BEHOLD.SO!
-  // Será algo parecido a: "vU4fKZ9sXj7kL2mN"
+  // HE PUESTO TU ID DE BEHOLD.SO AQUÍ:
   // ------------------------------------------------------
-  const WIDGET_ID = "PON_AQUI_TU_ID_COPIADO"; 
+  const WIDGET_ID = "HIjU7nIf7vWtmsayzr7C"; 
 
   // Esto carga el script del widget automáticamente
   useEffect(() => {
-    if (!WIDGET_ID || WIDGET_ID === "PON_AQUI_TU_ID_COPIADO") return;
+    if (!WIDGET_ID) return;
     
     const script = document.createElement("script");
     script.src = "https://w.behold.so/widget.js";
@@ -19,7 +18,10 @@ export default function InstagramSection() {
     document.body.appendChild(script);
 
     return () => {
-      document.body.removeChild(script);
+      // Limpieza (opcional, pero buena práctica)
+      if(document.body.contains(script)){
+        document.body.removeChild(script);
+      }
     };
   }, []);
 
@@ -54,17 +56,10 @@ export default function InstagramSection() {
           </motion.div>
         </div>
 
-        {/* AQUÍ SE CARGA EL WIDGET AUTOMÁTICAMENTE */}
+        {/* AQUÍ SE CARGA EL WIDGET */}
         <div className="min-h-[300px]">
-          {WIDGET_ID === "B1jU7nif7VvtmawyszjC" ? (
-             // Mensaje por si se te olvida poner el ID
-             <div className="p-10 border border-dashed border-[#2c2420]/20 text-neutral-400 text-xs uppercase tracking-widest">
-               Pega tu ID de Behold.so en el código para ver las fotos
-             </div>
-          ) : (
-             // El contenedor oficial del widget
-             <figure data-behold-id={WIDGET_ID}></figure>
-          )}
+           {/* Usamos el componente web oficial según tu captura de pantalla */}
+           <behold-widget feed-id={WIDGET_ID}></behold-widget>
         </div>
 
       </div>
