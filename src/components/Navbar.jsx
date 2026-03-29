@@ -16,11 +16,9 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        // CAMBIO CLAVE AQUÍ:
-        // 'bg-[#050505]/90': Color casi negro pero con un 10% de transparencia.
-        // Hemos quitado 'backdrop-blur' para asegurar que vaya fluido, 
-        // pero ahora verás sutilmente el contenido pasar por detrás.
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 transition-all duration-500 bg-[#050505]/90 border-b border-white/5 shadow-lg"
+        // CAMBIOS APLICADOS:
+        // Añadido 'transform-gpu' al final para acelerar por hardware la barra fija.
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 transition-all duration-500 bg-[#050505]/90 border-b border-white/5 shadow-lg transform-gpu"
       >
         {/* LOGO */}
         <a href="/" className="flex items-center gap-3 cursor-pointer z-50 relative group">
@@ -40,7 +38,9 @@ export default function Navbar() {
             <a 
               key={link.name} 
               href={link.href} 
-              className="group relative text-xs uppercase tracking-[0.25em] text-white/90 hover:text-white transition-colors duration-300 drop-shadow-sm"
+              // CAMBIO APLICADO:
+              // Eliminado 'drop-shadow-sm' para evitar cálculos de sombras dinámicas al hacer scroll.
+              className="group relative text-xs uppercase tracking-[0.25em] text-white/90 hover:text-white transition-colors duration-300"
             >
               {link.name}
               <span className="absolute -bottom-2 left-0 h-[1px] w-0 bg-rose-200 transition-all duration-300 group-hover:w-full" />
@@ -67,7 +67,6 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            // Fondo oscuro semitransparente (95%) para el menú móvil también
             className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#050505]/95 backdrop-blur-[2px] md:hidden"
           >
             <motion.div 

@@ -43,12 +43,12 @@ export default function Hero() {
   return (
     <div className="relative h-screen w-full overflow-hidden bg-gray-900">
       
-      {/* 1. IMAGEN DE FONDO */}
+      {/* 1. IMAGEN DE FONDO (Optimizada para GPU) */}
       <motion.div 
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 10, ease: "easeOut" }}
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center will-change-transform transform-gpu"
         style={{ backgroundImage: "url('/portada.webp')" }} 
       >
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10 opacity-60 mix-blend-overlay pointer-events-none" />
@@ -59,17 +59,16 @@ export default function Hero() {
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
         
         {/* Tagline Superior */}
-        {/* CAMBIO: Aumentado a -mt-60 (móvil) y -mt-96 (PC) para subir todo el bloque */}
         <motion.div
           initial={{ opacity: 0, letterSpacing: "0.2em" }}
           animate={{ opacity: 1, letterSpacing: "0.4em" }}
           transition={{ duration: 1.2, delay: 0.2 }}
           className="mb-4 flex flex-col items-center gap-2 -mt-60 md:-mt-96"
         >
-          <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-white/90 font-sans drop-shadow-lg">
+          <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-white/90 font-sans [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
             Handcrafted in Spain
           </span>
-          <span className="h-[1px] w-6 bg-rose-200/80 drop-shadow-md"></span>
+          <span className="h-[1px] w-6 bg-rose-200/80 shadow-md"></span>
         </motion.div>
 
         {/* Título Principal */}
@@ -77,10 +76,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative -mt-4 md:-mt-8 font-serif text-6xl font-normal text-white md:text-8xl lg:text-9xl tracking-tight leading-[1.1] drop-shadow-2xl"
+          className="relative -mt-4 md:-mt-8 font-serif text-6xl font-normal text-white md:text-8xl lg:text-9xl tracking-tight leading-[1.1] [text-shadow:0_8px_16px_rgba(0,0,0,0.5)]"
         >
           <span className="italic text-white">Heartmade</span>
-          <span className="block text-4xl md:text-6xl not-italic text-rose-100 font-light mt-[-0.2em] md:mt-[-0.3em] drop-shadow-lg">
+          <span className="block text-4xl md:text-6xl not-italic text-rose-100 font-light mt-[-0.2em] md:mt-[-0.3em] [text-shadow:0_4px_8px_rgba(0,0,0,0.5)]">
             by M
           </span>
         </motion.h1>
@@ -92,7 +91,7 @@ export default function Hero() {
           transition={{ delay: 0.8, duration: 1 }}
           className="mt-8 max-w-lg min-h-[3.5rem] flex items-start justify-center"
         >
-          <p className="text-base font-medium leading-7 text-white/90 font-sans md:text-lg tracking-wide drop-shadow-lg">
+          <p className="text-base font-medium leading-7 text-white/90 font-sans md:text-lg tracking-wide [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
             {text}
             <span className="animate-pulse font-light text-rose-200 ml-1">|</span>
           </p>
