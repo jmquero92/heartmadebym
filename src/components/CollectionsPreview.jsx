@@ -8,23 +8,7 @@ const collections = [
 
 export default function CollectionsPreview() {
   return (
-    <section className="relative w-full px-6 py-24 md:py-32 rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-20 mt-[-2rem] overflow-hidden">
-      
-      {/* --- TU IMAGEN DE FONDO LOCAL --- */}
-      <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center"
-        style={{ 
-          // IMPORTANTE: Cambia '.webp' si tu archivo es .webp o .webp
-          backgroundImage: "url('/bg.webp')" 
-        }} 
-      />
-      
-      {/* Capa de "Lavado" Blanco (Overlay) 
-          Ajusta la opacidad (0.90) si quieres que se vea más o menos tu imagen de fondo.
-          0.90 = Muy sutil (estilo galería)
-          0.70 = Se ve más la textura
-      */}
-      <div className="absolute inset-0 bg-[#fafaf9]/90 backdrop-blur-[1px]" />
+    <section className="relative w-full px-6 py-24 md:py-32 rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-20 mt-[-2rem] overflow-hidden bg-[#fafaf9]">
       
       {/* Contenido */}
       <div className="relative z-10">
@@ -62,9 +46,12 @@ export default function CollectionsPreview() {
               <div className="relative aspect-[3/4] overflow-hidden bg-white rounded-sm shadow-sm hover:shadow-2xl transition-all duration-500 border border-white/40">
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500 z-10" />
                 {/* Imagen del producto */}
-                <div 
-                  className="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105 bg-neutral-200" 
-                  style={{ backgroundImage: `url('${item.img}')` }}
+                <img 
+                  src={item.img} 
+                  alt={item.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 bg-neutral-200" 
                 />
                 
                 <div className="absolute bottom-6 left-6 z-20 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">

@@ -25,6 +25,7 @@ export default function Navbar() {
           <img 
             src="/logo.webp" 
             alt="Heartmade Logo" 
+            fetchpriority="high"
             className="h-10 w-10 md:h-12 md:w-12 object-cover rounded-full border border-white/20 shadow-md group-hover:scale-105 transition-transform duration-300"
           />
           <span className="hidden md:block font-serif text-lg italic text-white tracking-wide">
@@ -67,7 +68,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#050505]/95 backdrop-blur-[2px] md:hidden"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#050505] md:hidden"
           >
             <motion.div 
               className="flex flex-col gap-8 text-center"

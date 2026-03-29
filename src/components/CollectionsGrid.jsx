@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // --- TUS PRODUCTOS ---
@@ -70,30 +70,32 @@ export default function CollectionsGrid() {
   const [selectedId, setSelectedId] = useState(null); // ID de la foto abierta en Lightbox
 
   // Filtrado de productos
-  const filteredProducts = selectedCategory === "Todo" 
-    ? allProducts 
-    : allProducts.filter(p => p.category === selectedCategory);
+  const filteredProducts = useMemo(() => {
+    return selectedCategory === "Todo" 
+      ? allProducts 
+      : allProducts.filter(p => p.category === selectedCategory);
+  }, [selectedCategory]);
 
   // Encontrar el producto seleccionado actualmente
-  const selectedProduct = allProducts.find((p) => p.id === selectedId);
+  const selectedProduct = useMemo(() => allProducts.find((p) => p.id === selectedId), [selectedId]);
 
   // --- LÓGICA DE NAVEGACIÓN (NEXT / PREV) ---
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (!selectedId) return;
     const currentIndex = filteredProducts.findIndex(p => p.id === selectedId);
     // Si no encuentra el producto en la categoría actual, no hace nada
     if (currentIndex === -1) return; 
     const nextIndex = (currentIndex + 1) % filteredProducts.length; // Loop infinito
     setSelectedId(filteredProducts[nextIndex].id);
-  };
+  }, [selectedId, filteredProducts]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (!selectedId) return;
     const currentIndex = filteredProducts.findIndex(p => p.id === selectedId);
     if (currentIndex === -1) return;
     const prevIndex = (currentIndex - 1 + filteredProducts.length) % filteredProducts.length; // Loop infinito hacia atrás
     setSelectedId(filteredProducts[prevIndex].id);
-  };
+  }, [selectedId, filteredProducts]);
 
   // --- TECLADO (Flechas y ESC) ---
   useEffect(() => {
@@ -105,7 +107,7 @@ export default function CollectionsGrid() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedId, filteredProducts]); 
+  }, [selectedId, handleNext, handlePrev]); 
 
 
   return (

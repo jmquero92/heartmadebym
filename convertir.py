@@ -11,7 +11,7 @@ for archivo in os.listdir(directorio):
     extension = extension.lower()
 
     # Filtramos las imágenes que queremos convertir
-    if extension in ['.webp', '.webp', '.webp']:
+    if extension in ['.jpg', '.jpeg', '.png']:
         ruta_entrada = os.path.join(directorio, archivo)
         ruta_salida = os.path.join(directorio, f"{nombre}.webp")
 

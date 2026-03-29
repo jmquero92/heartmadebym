@@ -15,16 +15,9 @@ export default function ContactSection() {
   return (
     <section 
       id="contacto" 
-      className="relative w-full px-4 py-24 md:py-32 rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-40 mt-[-2rem] overflow-hidden min-h-[90vh] flex items-center justify-center"
+      className="relative w-full px-4 py-24 md:py-32 rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-40 mt-[-2rem] overflow-hidden min-h-[90vh] flex items-center justify-center bg-[#fafaf9]"
     >
       
-      {/* --- FONDO TEXTURA (Mantiene la coherencia con el resto de la web) --- */}
-      <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center" 
-        style={{ backgroundImage: "url('/bg.webp')" }} 
-      />
-      <div className="absolute inset-0 bg-[#fafaf9]/95 backdrop-blur-[1px]" />
-
       {/* --- CONTENEDOR PRINCIPAL: LA "TARJETA PREMIUM" --- */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
@@ -110,7 +103,7 @@ export default function ContactSection() {
           ></iframe>
 
           {/* Etiqueta flotante "Premium" sobre el mapa */}
-          <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md px-5 py-3 shadow-lg rounded-sm border-l-2 border-rose-300">
+          <div className="absolute top-6 right-6 bg-white px-5 py-3 shadow-lg rounded-sm border-l-2 border-rose-300">
              <span className="block text-[10px] uppercase tracking-widest text-neutral-400 mb-1">Ubicación</span>
              <span className="block font-serif text-lg text-[#2c2420] italic leading-none">La Rambla</span>
              <span className="block text-[10px] text-neutral-500 mt-1">Córdoba, España</span>

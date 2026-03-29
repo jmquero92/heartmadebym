@@ -48,9 +48,9 @@ export default function Hero() {
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 10, ease: "easeOut" }}
-        className="absolute inset-0 bg-cover bg-center will-change-transform transform-gpu"
-        style={{ backgroundImage: "url('/portada.webp')" }} 
+        className="absolute inset-0 w-full h-full"
       >
+        <img src="/portada.webp" alt="Hero Background" fetchpriority="high" decoding="sync" className="absolute inset-0 w-full h-full object-cover transform-gpu" />
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/10 opacity-60 mix-blend-overlay pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80" />
       </motion.div>
