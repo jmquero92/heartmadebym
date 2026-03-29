@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.jsx';
+import Hero from '../components/Hero.jsx';
+import CollectionsPreview from '../components/CollectionsPreview.jsx';
+import HistoryShort from '../components/HistoryShort.jsx';
+import InstagramSection from '../components/InstagramSection.jsx';
+import ContactSection from '../components/ContactSection.jsx';
+---
+
+<Layout title="Heartmade By M">
+    
+    <Navbar client:load />
+
+    <main class="w-full bg-[#f5f5f4]">
+      
+      <div class="relative w-full h-screen overflow-hidden">
+        <Hero client:load />
+      </div>
+
+      <div class="relative z-10 w-full bg-[#f5f5f4]">
+        
+        <div id="colecciones">
+            <CollectionsPreview client:visible={{rootMargin: "200px"}} />
+        </div>
+
+        <div id="historia">
+            <HistoryShort client:visible={{rootMargin: "200px"}} />
+        </div>
+
+        <div>
+            <InstagramSection client:visible={{rootMargin: "200px"}} />
+        </div>
+
+        <div id="contacto">
+            <ContactSection client:visible={{rootMargin: "200px"}} />
+        </div>
+
+      </div>
+
+    </main>
+    
+</Layout>

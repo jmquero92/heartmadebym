@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.jsx';
+import CollectionsGrid from '../components/CollectionsGrid.jsx';
+---
+
+<Layout title="Colecciones | HEARTMADE BY M">
+    
+    <Navbar client:load />
+
+    <main class="bg-[#f5f5f4] min-h-screen pt-40 pb-20">
+      
+      <section class="text-center px-6 mb-20 animate-fade-in-up">
+         <span class="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-4 block">
+            Handcrafted Archive
+         </span>
+         <h1 class="font-serif text-5xl md:text-7xl text-[#2c2420] italic mb-6">
+            Todas las Colecciones
+         </h1>
+         <p class="max-w-xl mx-auto text-neutral-500 font-light leading-relaxed">
+            Explora nuestro catálogo completo de piezas tejidas a mano. 
+      
+         </p>
+      </section>
+
+      <CollectionsGrid client:load />
+
+    </main>
+
+</Layout>
