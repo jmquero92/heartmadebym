@@ -14,8 +14,8 @@ export default function CollectionsPreview() {
       <div 
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{ 
-          // IMPORTANTE: Cambia '.jpg' si tu archivo es .png o .jpeg
-          backgroundImage: "url('/bg.jpg')" 
+          // IMPORTANTE: Cambia '.webp' si tu archivo es .webp o .webp
+          backgroundImage: "url('/bg.webp')" 
         }} 
       />
       

@@ -21,7 +21,7 @@ export default function InstagramSection() {
       {/* --- FONDO --- */}
       <div 
         className="absolute inset-0 w-full h-full bg-cover bg-center" 
-        style={{ backgroundImage: "url('/bg.jpg')" }} 
+        style={{ backgroundImage: "url('/bg.webp')" }} 
       />
       <div className="absolute inset-0 bg-[#fafaf9]/95 backdrop-blur-[1px]" />
 

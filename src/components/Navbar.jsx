@@ -25,7 +25,7 @@ export default function Navbar() {
         {/* LOGO */}
         <a href="/" className="flex items-center gap-3 cursor-pointer z-50 relative group">
           <img 
-            src="/logo.jpeg" 
+            src="/logo.webp" 
             alt="Heartmade Logo" 
             className="h-10 w-10 md:h-12 md:w-12 object-cover rounded-full border border-white/20 shadow-md group-hover:scale-105 transition-transform duration-300"
           />

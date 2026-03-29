@@ -4,63 +4,63 @@ import { motion, AnimatePresence } from "framer-motion";
 // --- TUS PRODUCTOS ---
 const allProducts = [
   // --- INVIERNO ---
-  { id: 100, title: "Colección Invierno", category: "Navidad", img: "/invierno.jpeg" },
-  { id: 101, title: "Bufanda Cálida 1", category: "Navidad", img: "/belen1.jpg" },
-  { id: 1010, title: "Bufanda Cálida 2", category: "Navidad", img: "/belen2.jpg" }, // ID CAMBIADO
-  { id: 102, title: "Gorro Textura", category: "Navidad", img: "/invierno2.jpeg" },
-  { id: 103, title: "Cuello Lana", category: "Navidad", img: "/invierno3.jpeg" },
-  { id: 104, title: "Set Invierno", category: "Navidad", img: "/invierno4.jpeg" },
-  { id: 105, title: "Detalle Tejido", category: "Navidad", img: "/invierno5.jpeg" },
-  { id: 106, title: "Manta Suave", category: "Navidad", img: "/invierno6.jpeg" },
+  { id: 100, title: "Colección Invierno", category: "Navidad", img: "/invierno.webp" },
+  { id: 101, title: "Bufanda Cálida 1", category: "Navidad", img: "/belen1.webp" },
+  { id: 1010, title: "Bufanda Cálida 2", category: "Navidad", img: "/belen2.webp" }, // ID CAMBIADO
+  { id: 102, title: "Gorro Textura", category: "Navidad", img: "/invierno2.webp" },
+  { id: 103, title: "Cuello Lana", category: "Navidad", img: "/invierno3.webp" },
+  { id: 104, title: "Set Invierno", category: "Navidad", img: "/invierno4.webp" },
+  { id: 105, title: "Detalle Tejido", category: "Navidad", img: "/invierno5.webp" },
+  { id: 106, title: "Manta Suave", category: "Navidad", img: "/invierno6.webp" },
 
   // --- ACCESORIOS ---
-  { id: 200, title: "Accesorio 0", category: "Accesorios", img: "/pañuelo.jpeg" }, // ID CAMBIADO
-  { id: 201, title: "Accesorio 1", category: "Accesorios", img: "/accesorio1.jpeg" },
-  { id: 202, title: "Accesorio 2", category: "Accesorios", img: "/accesorio2.jpeg" },
-  { id: 203, title: "Accesorio 3", category: "Accesorios", img: "/accesorio3.jpeg" },
-  { id: 204, title: "Accesorio 4", category: "Accesorios", img: "/accesorio4.jpeg" },
-  { id: 205, title: "Accesorio 5", category: "Accesorios", img: "/accesorio5.jpeg" },
+  { id: 200, title: "Accesorio 0", category: "Accesorios", img: "/pañuelo.webp" }, // ID CAMBIADO
+  { id: 201, title: "Accesorio 1", category: "Accesorios", img: "/accesorio1.webp" },
+  { id: 202, title: "Accesorio 2", category: "Accesorios", img: "/accesorio2.webp" },
+  { id: 203, title: "Accesorio 3", category: "Accesorios", img: "/accesorio3.webp" },
+  { id: 204, title: "Accesorio 4", category: "Accesorios", img: "/accesorio4.webp" },
+  { id: 205, title: "Accesorio 5", category: "Accesorios", img: "/accesorio5.webp" },
 
- { id: 301, title: "Amigurumi 1", category: "Amigurumi", img: "/juguete1.jpeg" },
+ { id: 301, title: "Amigurumi 1", category: "Amigurumi", img: "/juguete1.webp" },
 
-  { id: 302, title: "Amigurumi 2", category: "Amigurumi", img: "/juguete2.jpeg" },
+  { id: 302, title: "Amigurumi 2", category: "Amigurumi", img: "/juguete2.webp" },
 
-  { id: 303, title: "Muñeco Apego", category: "Amigurumi", img: "/juguete3.jpeg" },
+  { id: 303, title: "Muñeco Apego", category: "Amigurumi", img: "/juguete3.webp" },
 
-  { id: 304, title: "Osito Tejido", category: "Amigurumi", img: "/juguete4.jpeg" },
+  { id: 304, title: "Osito Tejido", category: "Amigurumi", img: "/juguete4.webp" },
 
-  { id: 305, title: "Conejito Suave", category: "Amigurumi", img: "/juguete5.jpeg" },
+  { id: 305, title: "Conejito Suave", category: "Amigurumi", img: "/juguete5.webp" },
 
-  { id: 306, title: "Juguete 6", category: "Amigurumi", img: "/juguete6.jpeg" },
+  { id: 306, title: "Juguete 6", category: "Amigurumi", img: "/juguete6.webp" },
 
-  { id: 307, title: "Juguete 7", category: "Amigurumi", img: "/juguete7.jpeg" },
+  { id: 307, title: "Juguete 7", category: "Amigurumi", img: "/juguete7.webp" },
 
-  { id: 308, title: "Juguete 8", category: "Amigurumi", img: "/juguete8.jpeg" },
+  { id: 308, title: "Juguete 8", category: "Amigurumi", img: "/juguete8.webp" },
 
-  { id: 309, title: "Juguete 9", category: "Amigurumi", img: "/juguete9.jpeg" },
+  { id: 309, title: "Juguete 9", category: "Amigurumi", img: "/juguete9.webp" },
 
-  { id: 311, title: "Juguete 11", category: "Amigurumi", img: "/juguete11.jpeg" },
+  { id: 311, title: "Juguete 11", category: "Amigurumi", img: "/juguete11.webp" },
 
-  { id: 313, title: "Juguete 13", category: "Amigurumi", img: "/juguete13.jpeg" },
+  { id: 313, title: "Juguete 13", category: "Amigurumi", img: "/juguete13.webp" },
 
-  { id: 314, title: "Juguete 14", category: "Amigurumi", img: "/juguete14.jpeg" },
+  { id: 314, title: "Juguete 14", category: "Amigurumi", img: "/juguete14.webp" },
 
-  { id: 315, title: "Juguete 15", category: "Amigurumi", img: "/juguete15.jpeg" },
+  { id: 315, title: "Juguete 15", category: "Amigurumi", img: "/juguete15.webp" },
 
-  { id: 316, title: "Juguete 16", category: "Amigurumi", img: "/juguete16.jpeg" },
+  { id: 316, title: "Juguete 16", category: "Amigurumi", img: "/juguete16.webp" },
 
-  { id: 317, title: "Juguete 17", category: "Amigurumi", img: "/juguete17.jpeg" },
+  { id: 317, title: "Juguete 17", category: "Amigurumi", img: "/juguete17.webp" },
 
-  { id: 318, title: "Juguete 18", category: "Amigurumi", img: "/juguete18.jpeg" },
+  { id: 318, title: "Juguete 18", category: "Amigurumi", img: "/juguete18.webp" },
 
-  { id: 319, title: "Juguete 19", category: "Amigurumi", img: "/juguete19.jpeg" },
+  { id: 319, title: "Juguete 19", category: "Amigurumi", img: "/juguete19.webp" },
   
   // PARA BEBÉS (Ojo con los duplicados aquí también)
-  { id: 401, title: "Chupetero 1", category: "Para Bebés", img: "/chupetero1.jpeg" }, // ID CAMBIADO (era 205)
-  { id: 300, title: "Juguete Principal", category: "Para Bebés", img: "/juguete.jpeg" },
-  { id: 310, title: "Juguete 10", category: "Para Bebés", img: "/juguete10.jpeg" }, 
-  { id: 312, title: "Juguete 12", category: "Para Bebés", img: "/juguete12.jpeg" },
-  { id: 402, title: "Chupetero 2", category: "Para Bebés", img: "/chupetero2.jpg" }, // ID CAMBIADO (era 205)
+  { id: 401, title: "Chupetero 1", category: "Para Bebés", img: "/chupetero1.webp" }, // ID CAMBIADO (era 205)
+  { id: 300, title: "Juguete Principal", category: "Para Bebés", img: "/juguete.webp" },
+  { id: 310, title: "Juguete 10", category: "Para Bebés", img: "/juguete10.webp" }, 
+  { id: 312, title: "Juguete 12", category: "Para Bebés", img: "/juguete12.webp" },
+  { id: 402, title: "Chupetero 2", category: "Para Bebés", img: "/chupetero2.webp" }, // ID CAMBIADO (era 205)
 ];
 
 const categories = ["Todo", "Navidad", "Accesorios", "Amigurumi","Para Bebés"];

@@ -7,7 +7,7 @@ export default function HistoryShort() {
       {/* 1. LA FOTO DE FONDO (Original) */}
       <div 
         className="absolute inset-0 w-full h-full bg-cover bg-center" 
-        style={{ backgroundImage: "url('/bg.jpg')" }} 
+        style={{ backgroundImage: "url('/bg.webp')" }} 
       />
 
       {/* 2. EL FILTRO (Overlay) - ¡ESTO ES LA CLAVE! 
