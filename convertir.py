@@ -1,33 +1,47 @@
 import os
-from PIL import Image
+import time
+from PIL import Image, ImageOps, ImageFile
+from pillow_heif import register_heif_opener
+
+# Registrar soporte HEIF
+register_heif_opener()
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 directorio = './public'
+extensiones_origen = ('.jpg', '.jpeg', '.png', '.heic', '.JPG', '.HEIC')
 
-print("Procesando imágenes, por favor espera...")
+print("🚀 Intento de rescate de imágenes...")
 
-# Recorremos todos los archivos de la carpeta public
 for archivo in os.listdir(directorio):
+    if archivo.startswith('.'): continue
+    
     nombre, extension = os.path.splitext(archivo)
-    extension = extension.lower()
-
-    # Filtramos las imágenes que queremos convertir
-    if extension in ['.jpg', '.jpeg', '.png']:
+    if extension in extensiones_origen:
         ruta_entrada = os.path.join(directorio, archivo)
         ruta_salida = os.path.join(directorio, f"{nombre}.webp")
 
         try:
-            # Abrimos la imagen original
+            # Pausa mínima para soltar bloqueos del sistema
+            time.sleep(0.1)
+            
+            # Intentamos abrir sin especificar formato
             img = Image.open(ruta_entrada)
             
-            # Nos aseguramos de que el modo de color sea compatible
-            if img.mode not in ('RGB', 'RGBA'):
-                img = img.convert('RGBA')
-
-            # Guardamos la imagen en formato WebP con calidad optimizada
-            img.save(ruta_salida, 'webp', optimize=True, quality=80)
-            print(f"✅ Convertido: {archivo} -> {nombre}.webp")
+            # Forzamos la carga de datos para ver si realmente es legible
+            img.load() 
             
-        except Exception as e:
-            print(f"❌ Error al convertir {archivo}: {e}")
+            img = ImageOps.exif_transpose(img)
+            if img.mode in ("RGBA", "P"):
+                img = img.convert("RGBA")
+            else:
+                img = img.convert("RGB")
 
-print("¡Proceso completado!")
+            img.save(ruta_salida, 'webp', optimize=True, quality=80)
+            img.close() # Cerramos explícitamente
+            
+            print(f"✅ Rescatada y Convertida: {archivo}")
+            os.remove(ruta_entrada)
+
+        except Exception as e:
+            print(f"❌ Imposible leer {archivo} con Python. Error: {e}")
+            # NO LO BORRAMOS esta vez para que puedas revisarlos
