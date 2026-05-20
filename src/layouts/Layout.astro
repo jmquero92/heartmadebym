@@ -42,8 +42,22 @@ const socialImageURL = new URL('/logo.webp', Astro.url);
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content={socialImageURL} />
 
-		<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-
+		<!-- SEO JSON-LD -->
+		<script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "LocalBusiness",
+		  "name": "Heartmade By M",
+		  "image": "https://heartmadebym.vercel.app/logo.webp",
+		  "description": "Piezas únicas de crochet y slow fashion hechas a mano en España.",
+		  "address": {
+		    "@type": "PostalAddress",
+		    "addressLocality": "La Rambla",
+		    "addressRegion": "Córdoba",
+		    "addressCountry": "ES"
+		  }
+		}
+		</script>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">

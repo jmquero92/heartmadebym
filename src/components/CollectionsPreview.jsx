@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// --- BANCO DE DATOS COMPLETO ---
+import allProducts from "../data/catalog.json";
+
 const pool = {
-  navidad: ["/invierno.webp", "/invierno1.webp", "/belen1.webp", "/belen2.webp", "/invierno2.webp", "/invierno3.webp"],
-  accesorios: ["/pendientes.webp", "/pañuelo.webp", "/accesorio1.webp", "/accesorio5.webp", "/accesorio10.webp", "/accesorio11.webp"],
-  amigurumi: ["/juguete1.webp", "/juguete2.webp", "/juguete3.webp", "/juguete4.webp", "/juguete6.webp", "/juguete15.webp"],
-  bebes: ["/juguete.webp", "/juguete10.webp", "/juguete12.webp", "/juguete25.webp", "/chupetero1.webp", "/chupetero2.webp"],
-  marcapaginas: ["/marca1.webp", "/marca2.webp", "/marca3.webp"]
+  navidad: allProducts.filter(p => p.category === "Navidad").map(p => p.img),
+  accesorios: allProducts.filter(p => p.category === "Accesorios").map(p => p.img),
+  amigurumi: allProducts.filter(p => p.category === "Amigurumi").map(p => p.img),
+  bebes: allProducts.filter(p => p.category === "Para Bebés").map(p => p.img),
+  marcapaginas: allProducts.filter(p => p.category === "Marcapáginas").map(p => p.img)
 };
 
 const collections = [
@@ -48,7 +49,7 @@ export default function CollectionsPreview() {
   }, []);
 
   return (
-    <section className="relative w-full px-6 py-24 md:py-32 rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-20 mt-[-2rem] overflow-hidden bg-[#fafaf9]">
+    <section className="relative w-full px-4 md:px-6 py-12 md:py-32 rounded-t-[2rem] md:rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-20 mt-[-2rem] overflow-hidden bg-[#fafaf9]">
       <div className="relative z-10 max-w-[1600px] mx-auto">
         
         <div className="mb-20 flex flex-col items-center text-center">
@@ -71,7 +72,7 @@ export default function CollectionsPreview() {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
+        <div className="flex overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-5 gap-6 md:gap-8 pb-8 lg:pb-0 [&::-webkit-scrollbar]:hidden">
           {collections.map((item, index) => (
             <motion.div
               key={item.id}
@@ -79,7 +80,7 @@ export default function CollectionsPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.8 }}
-              className={`flex flex-col gap-4 group cursor-pointer ${item.offset ? 'lg:mt-12' : ''}`}
+              className={`flex flex-col gap-4 group cursor-pointer flex-none w-[70vw] lg:w-auto snap-center ${item.offset ? 'lg:mt-12' : ''}`}
             >
               <div className="relative aspect-[3/4] overflow-hidden bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-500 border border-white/40">
                 <AnimatePresence mode="wait">
@@ -90,7 +91,6 @@ export default function CollectionsPreview() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    // CAMBIADO: Transición de fundido un poco más lenta (1.5s)
                     transition={{ duration: 1.5, ease: "easeInOut" }}
                     className="absolute inset-0 h-full w-full object-cover" 
                   />
